@@ -1,0 +1,207 @@
+"use srtict";
+
+// Variables
+let player_0_score = 0;
+let player_1_score = 0;
+let score = 0;
+let current_color_0 = "";
+let current_number_1;
+let btnclick = false;
+
+// Player 0
+
+const player_0_nameEl = document.querySelector(".name0");
+const playerScore0El = document.getElementById("score0");
+const card_p_aEL = document.querySelector(".card_p_a");
+
+// Main
+
+const deck = document.querySelector(".deck");
+
+const mainDeckImg = document.querySelector(".deck_img");
+
+const current_a_section = document.getElementById("current_a_section");
+const current_b_section = document.getElementById("current_b_section");
+
+const drawEl = document.querySelector(".draw_card");
+const drawEl2 = document.querySelector(".draw_card_2");
+
+const card_i_0El = document.getElementById("card_i_0");
+const card_i_1El = document.getElementById("card_i_1");
+
+const currentScore0El = document.getElementById("current_num_0");
+const currentScore1El = document.getElementById("current_num_1");
+
+const restart = document.querySelector(".restart");
+
+// Player 1
+
+const player_1_nameEl = document.querySelector(".name1");
+const playerScore1El = document.getElementById("score1");
+const card_p_bEL = document.querySelector(".card_p_b");
+
+// data collection
+let player0_name = prompt("Player 1 name please");
+let player1_name = prompt("Player 2 name please");
+// console.log(typeof player1_name, player2_name);
+
+// Name setting
+player_0_nameEl.textContent = player0_name;
+player_1_nameEl.textContent = player1_name;
+
+// Request data
+
+let card;
+
+function getCards() {
+  return fetch("http://localhost:5000/card_info_request")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      return response.json();
+    })
+    .catch(function (error) {
+      // Handle any errors
+      console.error("Error:", error);
+    });
+}
+
+drawEl.addEventListener("click", function () {
+  getCards().then((round_data) => {
+    console.log(round_data);
+
+    // Player 0 executes
+    currentScore0El.textContent = String(round_data.current_score_0);
+    card_i_0El.style.backgroundColor = String(round_data.current_color_0);
+    playerScore0El.classList.toggle("playerActive");
+    playerScore1El.classList.toggle("playerActive");
+    drawEl.disabled = true;
+    score += 2;
+    let player0_click = true;
+    let player_1click;
+    // Player 1 executes
+
+    drawEl2.addEventListener("click", function () {
+      // console.log("working");
+      drawEl2.disabled = true;
+      currentScore1El.textContent = String(round_data.current_score_1);
+      card_i_1El.style.backgroundColor = String(round_data.current_color_1);
+      playerScore0El.classList.toggle("playerActive");
+      playerScore1El.classList.toggle("playerActive");
+      player_1click = true;
+    });
+
+    setTimeout(function () {
+      // Round winning and updating
+
+      drawEl.disabled = false;
+      drawEl2.disabled = false;
+      if (round_data.winner === "1") {
+        player_1_score += 2;
+        playerScore1El.textContent = `${player_1_score}`;
+        console.log(String(player_1_score));
+      } else {
+        player_0_score += 2;
+        console.log(player_0_score);
+        playerScore0El.textContent = `${player_0_score}`;
+      }
+      console.log(score);
+
+      // Game winning
+      if (score === 30) {
+        // Winning title
+        if (player_0_score > player_1_score) {
+          deck.textContent = "Player 1 wins";
+        } else {
+          deck.textContent = "Player 2 wins";
+        }
+
+        // Player 0 hide
+
+        player_0_nameEl.classList.add("hidden");
+        playerScore0El.classList.add("hidden");
+        card_p_aEL.classList.add("hidden");
+
+        // Main hide
+        mainDeckImg.classList.add("hidden");
+
+        drawEl.classList.add("hidden");
+        drawEl2.classList.add("hidden");
+
+        card_i_0El.classList.add("hidden");
+        card_i_1El.classList.add("hidden");
+
+        currentScore0El.classList.add("hidden");
+        currentScore1El.classList.add("hidden");
+
+        // Player 1 hide
+
+        player_1_nameEl.classList.add("hidden");
+        playerScore1El.classList.add("hidden");
+        card_p_bEL.classList.add("hidden");
+      }
+    }, 2000);
+
+    // console.log(round_data.card_list, round_data.list_a, round_data.list_b);
+  });
+});
+
+// Restart
+restart.addEventListener("click", function () {
+  let restart_prom = prompt(
+    "Are you sure you want to restart? Say yes if you do!"
+  );
+
+  if (restart_prom === "yes") {
+    // console.log("working");
+    fetch("http://localhost:5000/restart_server_request", {
+      method: "POST",
+    });
+
+    // Reset variables
+    score = 0;
+
+    drawEl.disabled = false;
+    drawEl2.disabled = false;
+
+    deck.textContent = "Deck";
+
+    playerScore0El.textContent = "0";
+    playerScore1El.textContent = "0";
+
+    currentScore0El.textContent = "0";
+    card_i_0El.style.backgroundColor = "white";
+
+    currentScore1El.textContent = 0;
+    card_i_1El.style.backgroundColor = "white";
+
+    // If hidden unhide
+    player_0_nameEl.classList.remove("hidden");
+    playerScore0El.classList.remove("hidden");
+    card_p_aEL.classList.remove("hidden");
+
+    mainDeckImg.classList.remove("hidden");
+
+    drawEl.classList.remove("hidden");
+    drawEl2.classList.remove("hidden");
+
+    card_i_0El.classList.remove("hidden");
+    card_i_1El.classList.remove("hidden");
+
+    currentScore0El.classList.remove("hidden");
+    currentScore1El.classList.remove("hidden");
+
+    player_1_nameEl.classList.remove("hidden");
+    playerScore1El.classList.remove("hidden");
+    card_p_bEL.classList.remove("hidden");
+
+    // Renaming
+    let player0_name = prompt("Player 1 name please");
+    let player1_name = prompt("Player 2 name please");
+
+    // Name setting
+    player_0_nameEl.textContent = player0_name;
+    player_1_nameEl.textContent = player1_name;
+  }
+});

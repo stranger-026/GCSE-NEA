@@ -1,0 +1,302 @@
+/* CSS reset */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Information and presets */
+/* Window size - 1536 * 792 */
+
+html {
+  overflow: hidden;
+}
+
+/* Sections */
+
+.player0 {
+  width: 460.8px;
+  height: 792px;
+  background-color: #ff6666;
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+}
+.main {
+  width: 614.4px;
+  height: 792px;
+  position: relative;
+  left: 460.8px;
+  bottom: 792px;
+  background-color: #990000;
+}
+.player1 {
+  width: 512px;
+  height: 792px;
+  position: relative;
+  left: 1075.2px;
+  bottom: 1584px;
+  background-color: #ff6666;
+}
+
+/* Dual elements */
+
+.names {
+  font-size: 75px;
+  text-align: center;
+  top: 50px;
+}
+.card_p {
+  position: relative;
+  transform: rotate(90deg);
+  top: 200px;
+  align-items: center;
+}
+.card_i {
+  width: 1px;
+}
+.playerscores {
+  position: relative;
+  text-align: center;
+  font-size: 125px;
+  top: 100px;
+}
+
+/* .player0 section */
+
+.name0 {
+  position: relative;
+  font-size: 75px;
+}
+.card_p_a {
+  position: relative;
+  left: 115px;
+}
+
+/* .main section */
+.deck {
+  position: relative;
+  text-align: center;
+  font-size: 100px;
+}
+.deck_img {
+  position: relative;
+  transform: scale(1.25);
+  left: 190px;
+  top: 20px;
+}
+.draw_card {
+  background-color: green;
+  width: 100px;
+  height: 25px;
+  position: relative;
+  top: 60px;
+  left: 15px;
+}
+.draw_card_2 {
+  background-color: green;
+  width: 100px;
+  height: 25px;
+  position: relative;
+  top: 100px;
+  right: 89px;
+}
+/* .placeholder {
+  transform: rotate(90deg);
+}
+.placeholder_a {
+  position: absolute;
+  top: 435px;
+  left: 50px;
+}
+.placeholder_b {
+  position: absolute;
+  left: 325px;
+  bottom: 200px;
+} */
+.card_current {
+  position: absolute;
+}
+.card_current_a {
+  width: 159px;
+  height: 228px;
+  background-color: white;
+  left: 80px;
+  bottom: 190px;
+}
+
+.card_current_b {
+  width: 159px;
+  height: 228px;
+  background-color: white;
+  left: 350px;
+  bottom: 190px;
+}
+/* .current_num {
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  left: 70px;
+  font-weight: 700;
+  font-size: xx-large;
+} */
+.current_num_a {
+  text-align: center;
+  position: absolute;
+  top: 475px;
+  left: 150px;
+  font-weight: 700;
+  font-size: xx-large;
+  color: green;
+}
+.current_num_b {
+  text-align: center;
+  position: absolute;
+  top: 475px;
+  left: 420px;
+  font-weight: 700;
+  font-size: xx-large;
+  color: green;
+}
+
+.restart {
+  background-color: green;
+  width: 100px;
+  height: 25px;
+  position: absolute;
+  left: 251px;
+  top: 700px;
+}
+
+/* .player1 section */
+
+.name1 {
+  position: relative;
+}
+.card_p_b {
+  position: relative;
+  left: 140px;
+}
+.hidden {
+  visibility: hidden;
+}

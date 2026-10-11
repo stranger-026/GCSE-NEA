@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>main</title>
+  </head>
+  <body>
+    <section class="player0">
+      <h1 class="name0 names">Jack</h1>
+      <h1 id="score0" class="playerscores playerscore0 playerActive">0</h1>
+      <img class="card_p card_p_a" src="Card deck.jpg" />
+    </section>
+    <section class="main">
+      <h1 class="deck">Deck</h1>
+      <img class="deck_img" src="Card deck.jpg" />
+      <button class="draw_card">Draw Card</button>
+      <button class="draw_card_2">Draw Card 2</button>
+      <div id="current_a_section">
+        <img class="placeholder placeholder_a hidden" src="Card deck.jpg" />
+        <div id="card_i_0" class="card_current_a card_current"></div>
+        <p id="current_num_0" class="current_num_a current_num">0</p>
+      </div>
+      <div id="current_b_section">
+        <img class="placeholder placeholder_b hidden" src="Card deck.jpg" />
+        <div id="card_i_1" class="card_current_b card_current"></div>
+        <p id="current_num_1" class="current_num_b current_num">0</p>
+      </div>
+      <button class="restart">Restart</button>
+    </section>
+    <section class="player1">
+      <h1 class="name1 names">Tan</h1>
+      <h1 id="score1" class="playerscores playerscore1">0</h1>
+      <img class="card_p card_p_b" src="Card deck.jpg" />
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
